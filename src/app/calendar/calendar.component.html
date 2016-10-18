@@ -9,41 +9,42 @@
 		<button type="button" class="next" (click)="updateMonthData(+1)">&raquo;</button>
 	</div>
 
-  <!-- Days-->
-	<!--<div class="days">-->
+	<!-- Days-->
+	<div class="days">
 
 		<!-- Su Mo Tu We Th Fr Sa -->
-		<!--<div class="day-of-week" *ngFor="let dayOfWeek of dateTime.localizedDaysOfWeek" [ngClass]="{weekend: dayOfWeek.weekend}"
+		<div class="day-of-week" *ngFor="let dayOfWeek of dateTime.localizedDaysOfWeek"
 			title="{{dayOfWeek.fullName}}">
 			{{dayOfWeek.shortName}}
-		</div>-->
+		</div>
 
 		<!-- Fill up blank days for this month -->
-		<!--<div *ngIf="monthData.leadingDays.length < 7">
-			<div class="day" *ngFor="let dayNum of monthData.leadingDays" [ngClass]="{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month-1, dayNum).getDay()) !== -1}">
+		<div *ngIf="monthData.leadingDays.length < 7">
+			<div class="day" *ngFor="let dayNum of monthData.leadingDays">
 				{{dayNum}}
 			</div>
-		</div>-->
+		</div>
 
-		<!--<div class="day selectable" *ngFor="let dayNum of monthData.days" (click)="selectDate(dayNum)" title="{{monthData.year}}-{{monthData.month+1}}-{{dayNum}}"
+		<!--weekend:
+             [0,6].indexOf(toDate(monthData.year, monthData.month, dayNum).getDay()) !== -1-->
+
+		<div class="day selectable" *ngFor="let dayNum of monthData.days" (click)="selectDate(dayNum)" title="{{monthData.month + 1}}/{{dayNum}}/{{monthData.year}}"
 			[ngClass]="{
            selected:
              toDate(monthData.year, monthData.month, dayNum).getTime() === toDateOnly(selectedDate).getTime(),
            today:
-             toDate(monthData.year, monthData.month, dayNum).getTime() === today.getTime(),
-           weekend:
-             [0,6].indexOf(toDate(monthData.year, monthData.month, dayNum).getDay()) !== -1
+             toDate(monthData.year, monthData.month, dayNum).getTime() === today.getTime()
          }">
 			{{dayNum}}
-		</div>-->
+		</div>
 
 		<!-- Fill up blank days for this month -->
-		<!--<div *ngIf="monthData.trailingDays.length < 7">
-			<div class="day" *ngFor="let dayNum of monthData.trailingDays" [ngClass]="{weekend: [0,6].indexOf(toDate(monthData.year, monthData.month+1, dayNum).getDay()) !== -1}">
+		<div *ngIf="monthData.trailingDays.length < 7">
+			<div class="day" *ngFor="let dayNum of monthData.trailingDays">
 				{{dayNum}}
 			</div>
-		</div>-->
-	<!--</div>-->
+		</div>
+	</div>
 
 	<!-- Time -->
 	<!--<div class="days" id="time" *ngIf="!dateOnly">
