@@ -5,11 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DatetimepickerComponent } from './datetimepicker/datetimepicker.component';
+import { DatetimepickerDirective } from './datetimepicker/datetimepicker.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    DatetimepickerComponent,
+    DatetimepickerDirective
   ],
   imports: [
     BrowserModule,

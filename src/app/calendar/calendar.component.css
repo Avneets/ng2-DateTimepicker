@@ -1,6 +1,6 @@
 @keyframes slideDown {
   0% {
-    transform:  translateY(-10px);
+    transform:  translateY(100px);
   }
   100% {
     transform: translateY(0px);
@@ -113,6 +113,8 @@
     text-align: right;
 }
 
-.datetime-picker input[type=range] {
-    width: 150px;
+.datetime-picker input[type=number] {
+    margin-top:10px;
+    width: 20%;
+    height: 20px;
 }

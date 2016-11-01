@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter } from '@angular/core';
 import {DatetimeService} from './datetime.service';
 
 @Component({
@@ -7,12 +7,14 @@ import {DatetimeService} from './datetime.service';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit{
 
   public monthData:any;  // month calendar data
   public selectedDate:Date; //currently selected date
+  public hour:number;
+  public minute:number;
 
-  
+  public valueChanged:EventEmitter<any> = new EventEmitter();
 
 
   constructor(public dateTime:DatetimeService) { }
@@ -25,8 +27,8 @@ export class CalendarComponent implements OnInit {
   public initDateTime (date:Date) {
     date = date || new Date();
     this.selectedDate = date;
-    //this.hour         = this.selectedDate.getHours();
-    //this.minute       = this.selectedDate.getMinutes();
+    this.hour         = this.selectedDate.getHours();
+    this.minute       = this.selectedDate.getMinutes();
     this.monthData    = this.dateTime.getMonthData(this.year, this.month);
   }
 
@@ -43,7 +45,10 @@ export class CalendarComponent implements OnInit {
     if (dayNum){
       this.selectedDate = new Date (this.monthData.year, this.monthData.month , dayNum);
     }
+    this.selectedDate.setHours(parseInt( ''+this.hour || '0', 10));
+    this.selectedDate.setMinutes(parseInt( ''+this.minute|| '0', 10));
     console.log(this.selectedDate);
+    this.valueChanged.emit(this.selectedDate);
     
   };
 
@@ -79,5 +84,4 @@ export class CalendarComponent implements OnInit {
     dt.setMilliseconds(0);
     return dt;
   }
-
 }

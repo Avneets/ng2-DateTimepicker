@@ -1,3 +1,4 @@
+
 <div class="datetime-picker" tabindex="0">
 
 	<!-- Month - Year  -->
@@ -13,8 +14,7 @@
 	<div class="days">
 
 		<!-- Su Mo Tu We Th Fr Sa -->
-		<div class="day-of-week" *ngFor="let dayOfWeek of dateTime.localizedDaysOfWeek"
-			title="{{dayOfWeek.fullName}}">
+		<div class="day-of-week" *ngFor="let dayOfWeek of dateTime.localizedDaysOfWeek" title="{{dayOfWeek.fullName}}">
 			{{dayOfWeek.shortName}}
 		</div>
 
@@ -47,15 +47,15 @@
 	</div>
 
 	<!-- Time -->
-	<!--<div class="days" id="time" *ngIf="!dateOnly">
+	<div class="days" id="time">
 		<label class="timeLabel">Time:</label>
 		<span class="timeValue">
       {{("0"+hour).slice(-2)}} : {{("0"+minute).slice(-2)}}
     </span><br/>
 		<label class="hourLabel">Hour:</label>
-		<input #hours class="hourInput" (change)="selectDate()" type="range" min="0" max="23" [(ngModel)]="hour" />
+		<input #hours class="hourInput" (change)="selectDate()" type="number" min="0" max="23" [(ngModel)]="hour" />
 		<label class="minutesLabel">Min:</label>
-		<input #minutes class="minutesInput" (change)="selectDate()" type="range" min="0" max="59" range="10" [(ngModel)]="minute"
+		<input #minutes class="minutesInput" (change)="selectDate()" type="number" min="0" max="59" [(ngModel)]="minute"
 		/>
-	</div>-->
+	</div>
 </div>

@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DateTime Picker';
+  public exampleDate:Date = new Date();
 }
